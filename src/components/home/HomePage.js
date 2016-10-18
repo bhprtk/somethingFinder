@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class HomePage extends Component {
 
 	constructor() {
@@ -11,8 +12,7 @@ class HomePage extends Component {
 
 	inputChange(e) {
 		let input = e.target;
-		const autocomplete = new google.maps.places.Autocomplete(input);
-		this.setState({autocomplete});
+		this.setState({autocomplete: new google.maps.places.Autocomplete(input)});
 	}
 
 	submitAddress(e) {
