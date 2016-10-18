@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Geosuggest from 'react-geosuggest';
 
 class HomePage extends Component {
 
@@ -7,22 +6,35 @@ class HomePage extends Component {
 		super();
 
 		this.inputChange = this.inputChange.bind(this);
+		this.submitAddress = this.submitAddress.bind(this);
 	}
 
 	inputChange(e) {
 		let input = e.target;
 		const autocomplete = new google.maps.places.Autocomplete(input);
-		console.log ('input:', input)
+		this.setState({autocomplete});
+	}
+
+	submitAddress(e) {
+		e.preventDefault();
+		const {autocomplete} = this.state;
+		const place = autocomplete.getPlace();
+		console.log ('place:', place)
 	}
 
 	render() {
 		return (
 			<div>
 				<h1>hello</h1>
-				<input
-					type="text"
-        	placeholder="Enter a location"
-					onChange={this.inputChange} />
+				<form onSubmit={this.submitAddress}>
+					<input
+						className="form-control"
+						type="text"
+						placeholder="Enter a location"
+						onChange={this.inputChange} />
+
+				</form>
+
 			</div>
 		);
 	}
