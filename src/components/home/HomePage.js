@@ -20,8 +20,6 @@ class HomePage extends Component {
 			<div>
 				<h1>hello</h1>
 				<input
-					id="pac-input"
-					className="controls"
 					type="text"
         	placeholder="Enter a location"
 					onChange={this.inputChange} />
