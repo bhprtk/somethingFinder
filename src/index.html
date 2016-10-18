@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gym Finder</title>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOF8KwZhH36F4I5neMGCn9PycbW4jku3Y&libraries=places"></script>
+</head>
+<body>
+
+	<input
+		id="pac-input"
+		className="controls"
+		type="text"
+		placeholder="Temporary location" />
+
+		<script>
+		var input = document.getElementById('pac-input');
+		console.log('input from html', input);
+		</script>
+
+	<div id="app"></div>
+	<script src="/bundle.js"></script>
+</body>
+</html>
