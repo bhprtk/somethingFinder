@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as nameActions from '../../actions/nameActions';
+
 
 class HomePage extends Component {
 
@@ -24,7 +27,9 @@ class HomePage extends Component {
   }
 
   requestName() {
+    const {requestName} = this.props.nameActions;
     console.log('request name');
+    requestName();
   }
 
   render() {
@@ -45,10 +50,6 @@ class HomePage extends Component {
 
         </form>
 
-        <button>
-          test component
-        </button>
-
       </div>
     );
   }
@@ -57,6 +58,12 @@ class HomePage extends Component {
 function mapStateToProps(state, ownProps) {
   return {
 
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    nameActions: bindActionCreators(nameActions, dispatch)
   }
 }
 

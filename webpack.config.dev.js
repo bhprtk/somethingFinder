@@ -3,7 +3,7 @@ import path from 'path';
 
 export default {
   debug: true, // display debug information
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   noInfo: false, // webpack will display all the files it's bundling
   entry: [
     'eventsource-polyfill', // necessary for hot reloading with IE
