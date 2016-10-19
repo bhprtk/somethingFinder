@@ -17,6 +17,7 @@
     "postbuild": "babel-node tools/distServer.js"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
     "dotenv": "^2.0.0",
