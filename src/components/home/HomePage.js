@@ -30,6 +30,7 @@ class HomePage extends Component {
     const {requestName} = this.props.nameActions;
     console.log('request name');
     requestName();
+    console.log ('this.props.name:', this.props.name)
   }
 
   render() {
@@ -57,7 +58,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-
+    name: state.name.name
   }
 }
 
