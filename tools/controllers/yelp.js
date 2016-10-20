@@ -9,8 +9,9 @@ const yelp = new Yelp({
 });
 
 export function getGymList(location) {
-	console.log ('location:', location)
-	return yelp.search({ term: 'gym', location })
-		.then(data => data)
-		.catch(err => err);
+	return (
+		yelp.search({ term: 'gym', location })
+			.then(data => data)
+			.catch(err => err)
+	);
 }

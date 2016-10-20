@@ -1,0 +1,11 @@
+.title {
+	color: #fff
+}
+
+.home {
+	margin-top: -20px;
+	padding-top: 30vh;
+	background-image: url('http://i.imgur.com/R8ZCRUj.jpg');
+	height: 110vh;
+	width: 100%;
+}

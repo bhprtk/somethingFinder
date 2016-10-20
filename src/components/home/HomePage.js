@@ -35,8 +35,8 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="text-center">GYM FINDER</h1>
+      <div className="home">
+        <h1 className="text-center title">GYM FINDER</h1>
         <div className="col-md-6 col-md-offset-3">
           <form onSubmit={this.submitAddress}>
             <input
