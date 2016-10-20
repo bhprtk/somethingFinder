@@ -5,8 +5,8 @@ import types from '../actions/actionTypes';
 export const INITIAL_STATE = [{name: null}];
 
 export const receive = (state = INITIAL_STATE, action) => {
-	console.log ('action:', action)
-	return {name: action.name};
+	const {name} = action;
+	return {name};
 }
 
 // const receive = (state, action) =>

@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
 
-router.use('/pratik', require('./pratik'));
+router.use('/yelp', require('./yelp'));
 
 module.exports = router;

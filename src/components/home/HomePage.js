@@ -23,7 +23,7 @@ class HomePage extends Component {
     e.preventDefault();
     const {autocomplete} = this.state;
     const place = autocomplete.getPlace();
-    console.log ('place:', place)
+    console.log ('place.geometry.location.lat():', place.geometry.location.lat())
   }
 
   requestName() {
@@ -36,20 +36,18 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>hello</h1>
-        <button
-          className="btn btn-primary btn-large"
-          onClick={this.requestName}>
-          Request Name
-        </button>
-        <form onSubmit={this.submitAddress}>
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Enter a location"
-            onChange={this.inputChange} />
+        <h1 className="text-center">GYM FINDER</h1>
+        <div className="col-md-6 col-md-offset-3">
+          <form onSubmit={this.submitAddress}>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter a location"
+              onChange={this.inputChange} />
 
-        </form>
+          </form>
+
+        </div>
 
       </div>
     );
