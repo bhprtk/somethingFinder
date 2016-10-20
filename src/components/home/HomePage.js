@@ -37,15 +37,20 @@ class HomePage extends Component {
     return (
       <div className="home">
         <p className="text-center title">GYM FINDER</p>
-        <div className="col-md-6 col-md-offset-3">
-          <form onSubmit={this.submitAddress}>
+        <div className="col-md-8 col-md-offset-2">
+          <form
+            onSubmit={this.submitAddress}>
               <input
                 style={styles.searchBar}
-                className="form-control"
+                className="col-md-10"
                 type="text"
                 placeholder="Enter a location"
                 onChange={this.inputChange} />
-
+              <button
+                style={styles.searchButton}
+                className="btn btn-default col-md-2">
+                <strong style={styles.buttonText}>Search</strong>
+              </button>
           </form>
 
         </div>
@@ -59,6 +64,13 @@ const styles = {
   searchBar: {
     height: 50,
     fontSize: 24
+  },
+  searchButton: {
+    height: 50,
+    background: '#90A4AE'
+  },
+  buttonText: {
+    fontSize: 20
   }
 };
 
