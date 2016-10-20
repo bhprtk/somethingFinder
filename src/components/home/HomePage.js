@@ -12,6 +12,8 @@ class HomePage extends Component {
     this.inputChange = this.inputChange.bind(this);
     this.submitAddress = this.submitAddress.bind(this);
     this.requestName = this.requestName.bind(this);
+
+    
   }
 
   inputChange(e) {
