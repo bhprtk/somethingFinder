@@ -58,7 +58,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    name: state.name.name
+    name: state.name
   }
 }
 
