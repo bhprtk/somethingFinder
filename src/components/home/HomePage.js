@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as nameActions from '../../actions/nameActions';
-
+import {browserHistory} from 'react-router';
 
 class HomePage extends Component {
 
@@ -23,7 +23,9 @@ class HomePage extends Component {
     e.preventDefault();
     const {autocomplete} = this.state;
     const place = autocomplete.getPlace();
-    console.log ('place.geometry.location.lat():', place.geometry.location.lat())
+    if(place) {
+      browserHistory.push("/results");
+    }
   }
 
   requestName() {
