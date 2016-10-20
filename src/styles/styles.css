@@ -1,5 +1,11 @@
 .title {
-	color: #fff
+	color: #fff;
+	font-size: 72px;
+	font-weight: bold;
+	font-family: 'Acme', sans-serif;
+	/*font-family: 'Archivo Black', sans-serif;*/
+	/*font-family: 'Alfa Slab One', cursive;*/
+
 }
 
 .home {

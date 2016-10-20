@@ -36,14 +36,15 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home">
-        <h1 className="text-center title">GYM FINDER</h1>
+        <p className="text-center title">GYM FINDER</p>
         <div className="col-md-6 col-md-offset-3">
           <form onSubmit={this.submitAddress}>
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Enter a location"
-              onChange={this.inputChange} />
+              <input
+                style={styles.searchBar}
+                className="form-control"
+                type="text"
+                placeholder="Enter a location"
+                onChange={this.inputChange} />
 
           </form>
 
@@ -53,6 +54,13 @@ class HomePage extends Component {
     );
   }
 }
+
+const styles = {
+  searchBar: {
+    height: 50,
+    fontSize: 24
+  }
+};
 
 function mapStateToProps(state, ownProps) {
   return {
