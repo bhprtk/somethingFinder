@@ -8,7 +8,6 @@ class HomePage extends Component {
 
   constructor() {
     super();
-
     this.inputChange = this.inputChange.bind(this);
     this.submitAddress = this.submitAddress.bind(this);
     this.requestName = this.requestName.bind(this);
@@ -23,6 +22,7 @@ class HomePage extends Component {
     e.preventDefault();
     const {autocomplete} = this.state;
     const place = autocomplete.getPlace();
+    console.log ('place.formatted_address:', place.formatted_address)
     if(place) {
       browserHistory.push("/results");
     }
@@ -39,18 +39,18 @@ class HomePage extends Component {
     return (
       <div className="home">
         <p className="text-center title">GYM FINDER</p>
-        <div className="col-md-8 col-md-offset-2">
+        <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
           <form
             onSubmit={this.submitAddress}>
               <input
                 style={styles.searchBar}
-                className="col-md-10"
+                className="col-md-10 col-sm-10 col-xs-10"
                 type="text"
                 placeholder="Enter a location"
                 onChange={this.inputChange} />
               <button
                 style={styles.searchButton}
-                className="btn btn-default col-md-2">
+                className="btn btn-default col-md-2 col-sm-2 col-xs-2">
                 <strong style={styles.buttonText}>Search</strong>
               </button>
           </form>
