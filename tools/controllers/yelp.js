@@ -10,7 +10,7 @@ const yelp = new Yelp({
 
 export function getGymList(location) {
 	return (
-		yelp.search({ term: 'gym', location })
+		yelp.search({ term: 'gym', ll: '37.788022, -122.399797' })
 			.then(data => data)
 			.catch(err => err)
 	);

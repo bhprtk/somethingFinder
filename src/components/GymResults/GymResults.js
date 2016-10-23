@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as yelpActions from '../../actions/yelpActions';
+import GymResultsList from './GymResultsList';
 
 class GymResults extends Component {
 	constructor(props) {
@@ -18,13 +19,14 @@ class GymResults extends Component {
 
 	render() {
 		const { place, gymResults } = this.props;
+		
 		if(!gymResults) {
 			return (
 				<h1>Loading...</h1>
 			);
 		} else {
 			return (
-				<h1>Gym Results</h1>
+				<GymResultsList />
 			);
 		}
 	}
