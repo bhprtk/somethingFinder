@@ -17,8 +17,8 @@ class GymResults extends Component {
 	}
 
 	render() {
-		const { place } = this.props;
-		if(!place) {
+		const { place, gymResults } = this.props;
+		if(!gymResults) {
 			return (
 				<h1>Loading...</h1>
 			);
@@ -32,7 +32,8 @@ class GymResults extends Component {
 
 function mapStateToProps(state, ownProps) {
 	return {
-		place: state.place.place
+		place: state.place.place,
+		gymResults: state.gymResults.gymResults
 	};
 }
 

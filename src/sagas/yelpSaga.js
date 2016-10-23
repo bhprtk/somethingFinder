@@ -6,7 +6,11 @@ export default (api) => {
 
 	function* worker(place) {
 		const gymResults = yield call(api.findGyms, place);
-		console.log ('gymResults:', gymResults)
+		if(gymResults.status === 200) {
+			yield put(yelpActions.receiveGymResults(gymResults.data))
+		} else {
+			yield put(yelpActions.receiveGymResultsFailure(gymResults));
+		}
 	}
 
 	function* watcher() {
@@ -17,6 +21,7 @@ export default (api) => {
 	}
 
 	return {
-		watcher
-	}
+		watcher,
+		worker
+	};
 }

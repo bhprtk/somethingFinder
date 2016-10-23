@@ -6,3 +6,17 @@ export function findGyms(place) {
 		place
 	};
 }
+
+export function receiveGymResults(gymResults) {
+	return {
+		type: types.GYM_RESULTS_SUCCESS,
+		gymResults
+	};
+}
+
+export function receiveGymResultsFailure(error) {
+	return {
+		type: types.GYM_RESULTS_FAILURE,
+		gymResults
+	}
+}
