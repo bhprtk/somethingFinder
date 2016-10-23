@@ -4,16 +4,15 @@ import * as yelpActions from '../actions/yelpActions';
 
 export default (api) => {
 
-	function* worker() {
-
+	function* worker(place) {
+		const gymResults = yield call(api.findGyms, place);
+		console.log ('gymResults:', gymResults)
 	}
 
 	function* watcher() {
 		while(true) {
 			const input = yield take(types.FIND_GYMS_REQUEST);
-			console.log('hello')
-			console.log ('input:', input)
-			// yield call(worker, place);
+			yield call(worker, input.place);
 		}
 	}
 
