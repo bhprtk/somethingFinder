@@ -10,19 +10,29 @@ class GymResults extends Component {
 
 	componentDidMount() {
 		// console.log('here ');
+		const { place, yelpActions } = this.props;
+		if(place) {
+			yelpActions.findGyms(place);
+		}
 	}
 
 	render() {
-		console.log ('this.props:', this.props)
-		return (
-			<h1>Gym Results</h1>
-		);
+		const { place } = this.props;
+		if(!place) {
+			return (
+				<h1>Loading...</h1>
+			);
+		} else {
+			return (
+				<h1>Gym Results</h1>
+			);
+		}
 	}
 }
 
 function mapStateToProps(state, ownProps) {
 	return {
-		place: state.place
+		place: state.place.place
 	};
 }
 

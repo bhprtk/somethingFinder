@@ -31,7 +31,7 @@ class HomePage extends Component {
       storeActions.storePlace(formatted_address);
       // nameActions.requestName();
       // yelpActions.findGyms(place);
-      // browserHistory.push("/results");
+      browserHistory.push("/results");
     }
   }
 

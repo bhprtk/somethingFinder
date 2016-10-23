@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import name from './nameReducer';
-import store from './storeReducer';
+import place from './placeReducer';
 
 const rootReducer = combineReducers({
 	name,
-	// store
+	place
 });
 
 export default rootReducer;
