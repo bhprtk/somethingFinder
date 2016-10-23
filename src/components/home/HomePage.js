@@ -27,8 +27,12 @@ class HomePage extends Component {
     const {yelpActions, nameActions, storeActions} = this.props;
     const place = autocomplete.getPlace();
     if(place) {
-      const {formatted_address} = place;
-      storeActions.storePlace(formatted_address);
+      console.log ('place:', place)
+      let location = {};
+      location.lat = place.geometry.location.lat();
+      location.lng = place.geometry.location.lng();
+
+      storeActions.storePlace(location);
       // nameActions.requestName();
       // yelpActions.findGyms(place);
       browserHistory.push("/results");
