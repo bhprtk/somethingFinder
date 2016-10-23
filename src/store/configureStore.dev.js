@@ -7,6 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import sagas from '../sagas';
 import createLogger from 'redux-logger';
 import config from '../config/debugSettings';
+import type from '../actions/actionTypes';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +17,8 @@ const SAGA_LOGGING_BLACKLIST = ['EFFECT_TRIGGERED', 'EFFECT_RESOLVED', 'EFFECT_R
 const logger = createLogger({
   predicate: (getState, { type }) => USE_LOGGING && R.not(R.contains(type, SAGA_LOGGING_BLACKLIST)),
 });
+
+// const logger = createLogger();
 
 export default function configureStore(initialState) {
 	const store = createStore (

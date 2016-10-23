@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as nameActions from '../../actions/nameActions';
 import {browserHistory} from 'react-router';
+
+import * as nameActions from '../../actions/nameActions';
+import * as yelpActions from '../../actions/yelpActions';
+import * as storeActions from '../../actions/storeActions';
 
 class HomePage extends Component {
 
@@ -21,10 +24,14 @@ class HomePage extends Component {
   submitAddress(e) {
     e.preventDefault();
     const {autocomplete} = this.state;
+    const {yelpActions, nameActions, storeActions} = this.props;
     const place = autocomplete.getPlace();
-    console.log ('place.formatted_address:', place.formatted_address)
     if(place) {
-      browserHistory.push("/results");
+      const {formatted_address} = place;
+      storeActions.storePlace(formatted_address);
+      // nameActions.requestName();
+      // yelpActions.findGyms(place);
+      // browserHistory.push("/results");
     }
   }
 
@@ -47,7 +54,8 @@ class HomePage extends Component {
                 className="col-md-10 col-sm-10 col-xs-10"
                 type="text"
                 placeholder="Enter a location"
-                onChange={this.inputChange} />
+                onChange={this.inputChange}
+                required />
               <button
                 style={styles.searchButton}
                 className="btn btn-default col-md-2 col-sm-2 col-xs-2">
@@ -84,7 +92,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    nameActions: bindActionCreators(nameActions, dispatch)
+    nameActions: bindActionCreators(nameActions, dispatch),
+    yelpActions: bindActionCreators(yelpActions, dispatch),
+    storeActions: bindActionCreators(storeActions, dispatch)
   }
 }
 
