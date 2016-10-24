@@ -19,14 +19,15 @@ class GymResults extends Component {
 
 	render() {
 		const { place, gymResults } = this.props;
-		
+
 		if(!gymResults) {
 			return (
 				<h1>Loading...</h1>
 			);
 		} else {
 			return (
-				<GymResultsList />
+				<GymResultsList
+					list={gymResults.businesses} />
 			);
 		}
 	}
