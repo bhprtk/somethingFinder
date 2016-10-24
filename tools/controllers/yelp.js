@@ -16,3 +16,11 @@ export function getGymList(location) {
 			.catch(err => err)
 	);
 }
+
+export function getBusiness() {
+  return (
+    yelp.business("the-fitness-center-san-jose-2")
+      .then(data => data)
+      .catch(err => err)
+  );
+}

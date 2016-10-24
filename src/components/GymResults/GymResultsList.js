@@ -26,7 +26,8 @@ class GymResultsList extends Component {
 
 const styles = {
 	container: {
-		paddingTop: 10
+		paddingTop: 10,
+		color: '#696969'
 	}
 }
 
