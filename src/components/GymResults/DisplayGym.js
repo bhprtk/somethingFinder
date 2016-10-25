@@ -12,8 +12,7 @@ class DisplayGym extends Component {
 
 	currentGym(e) {
 		const { gym, storeActions } = this.props;
-		console.log ('gym:', gym)
-		// storeActions.storeCurrentLocationMarker(gym);
+		storeActions.storeCurrentLocationMarker(gym.location);
 	}
 
 	render() {
