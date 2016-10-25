@@ -17,7 +17,7 @@ class GymResultsList extends Component {
 			);
 		});
 		return (
-			<div>
+			<div className="scrollable-div">
 				{displayList}
 			</div>
 		);
