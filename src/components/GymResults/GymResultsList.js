@@ -5,14 +5,23 @@ import DisplayGym from './DisplayGym';
 class GymResultsList extends Component {
 	constructor(props) {
 		super(props);
+
+		this.currentGym = this.currentGym.bind(this);
+	}
+
+	currentGym(e) {
+		// console.log ('e.dataset.index:', e.dataset.index)
+		console.log ('e.target:', e.target)
 	}
 
 	render() {
 		const { list } = this.props;
 		let displayList = list.map((gym, index) => {
 			return (
-				<ul key={index} className="list-group">
-					<DisplayGym gym={gym}/>
+				<ul
+					key={index}
+					className="list-group">
+					<DisplayGym gym={gym} index={index} />
 				</ul>
 			);
 		});

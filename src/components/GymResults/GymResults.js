@@ -11,7 +11,6 @@ class GymResults extends Component {
 	}
 
 	componentDidMount() {
-		// console.log('here ');
 		const { place, yelpActions } = this.props;
 		if(place) {
 			yelpActions.findGyms(place);
@@ -46,7 +45,13 @@ const styles = {
 		paddingTop: 10,
 		color: '#696969'
 	}
-}
+};
+
+GymResults.propTypes = {
+	// place: PropTypes.object.isRequired,
+	yelpActions: PropTypes.object.isRequired,
+	// gymResults: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state, ownProps) {
 	return {

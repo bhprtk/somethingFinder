@@ -21,7 +21,6 @@ class GoogleMap extends Component {
 	render() {
 		return (
 			<div>
-				<h1>GoogleMap</h1>
 				<div ref="maphere" style={styles.maphere}></div>
 			</div>
 		);
@@ -30,7 +29,7 @@ class GoogleMap extends Component {
 
 const styles = {
 	maphere: {
-		height: '400px',
+		height: '50vh',
     width: '100%'
 	}
 }
