@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 class GoogleMap extends Component {
 	constructor(props) {
@@ -19,6 +20,7 @@ class GoogleMap extends Component {
 	}
 
 	render() {
+		console.log ('this.props.currentLocationMarker:', this.props.currentLocationMarker)
 		return (
 			<div>
 				<div ref="maphere" style={styles.maphere}></div>
@@ -32,6 +34,12 @@ const styles = {
 		height: '50vh',
     width: '100%'
 	}
+};
+
+function mapStateToProps(state, ownProps) {
+	return {
+		currentLocationMarker: state.currentLocationMarker.currentLocationMarker
+	};
 }
 
-export default GoogleMap;
+export default connect(mapStateToProps)(GoogleMap);

@@ -6,3 +6,10 @@ export function storePlace(place) {
 		place
 	};
 }
+
+export function storeCurrentLocationMarker(currentLocationMarker) {
+	return {
+		type: types.STORE_LOCATION_MARKER,
+		currentLocationMarker
+	};
+}

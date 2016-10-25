@@ -9,4 +9,5 @@ export default createTypes(`
 	GYM_RESULTS_FAILURE
 
 	STORE_PLACE
+	STORE_LOCATION_MARKER
 `);

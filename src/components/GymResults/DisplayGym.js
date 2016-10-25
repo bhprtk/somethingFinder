@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as storeActions from '../../actions/storeActions';
 
 class DisplayGym extends Component {
 	constructor(props) {
@@ -8,7 +11,9 @@ class DisplayGym extends Component {
 	}
 
 	currentGym(e) {
-		console.log ('e.target.dataset.index:', e.target.dataset.index)
+		const { gym, storeActions } = this.props;
+		console.log ('gym:', gym)
+		// storeActions.storeCurrentLocationMarker(gym);
 	}
 
 	render() {
@@ -17,8 +22,7 @@ class DisplayGym extends Component {
 			<a
 				className="list-group-item media"
 				onClick={this.currentGym}
-				role="button"
-				data-index={index}>
+				role="button">
 				<div className="media-left">
 					<img className="media-object" src={gym.image_url}/>
 				</div>
@@ -37,4 +41,16 @@ DisplayGym.propTypes = {
 	gym: PropTypes.object.isRequired
 };
 
-export default DisplayGym;
+function mapStateToProps(state, ownProps) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		storeActions: bindActionCreators(storeActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayGym);
