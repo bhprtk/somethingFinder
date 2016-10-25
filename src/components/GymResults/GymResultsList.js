@@ -17,17 +17,10 @@ class GymResultsList extends Component {
 			);
 		});
 		return (
-			<div className="container" style={styles.container}>
+			<div>
 				{displayList}
 			</div>
 		);
-	}
-}
-
-const styles = {
-	container: {
-		paddingTop: 10,
-		color: '#696969'
 	}
 }
 
