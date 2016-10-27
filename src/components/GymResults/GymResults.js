@@ -17,6 +17,11 @@ class GymResults extends Component {
 		}
 	}
 
+	componentWillReceiveProps(newProps) {
+		sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
+		console.log ('sessionStorage:', sessionStorage)
+	}
+
 	render() {
 		const { place, gymResults } = this.props;
 

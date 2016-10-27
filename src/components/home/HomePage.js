@@ -33,8 +33,6 @@ class HomePage extends Component {
       location.lng = place.geometry.location.lng();
 
       storeActions.storePlace(location);
-      // nameActions.requestName();
-      // yelpActions.findGyms(place);
       browserHistory.push("/results");
     }
   }
