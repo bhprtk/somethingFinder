@@ -8,6 +8,10 @@ import GoogleMap from './GoogleMap';
 class GymResults extends Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			gymResults: JSON.parse(sessionStorage.gymResults)
+		}
 	}
 
 	componentDidMount() {
@@ -19,11 +23,14 @@ class GymResults extends Component {
 
 	componentWillReceiveProps(newProps) {
 		sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
-		console.log ('sessionStorage:', sessionStorage)
+		this.setState({
+			gymResults: JSON.parse(sessionStorage.gymResults)
+		})
 	}
 
 	render() {
-		const { place, gymResults } = this.props;
+		const { place } = this.props;
+		const { gymResults } = this.state;
 
 		if(!gymResults) {
 			return (
