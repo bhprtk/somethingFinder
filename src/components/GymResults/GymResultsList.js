@@ -16,15 +16,22 @@ class GymResultsList extends Component {
 
 	render() {
 		const { list } = this.props;
-		let displayList = list.map((gym, index) => {
-			return (
-				<ul
-					key={index}
-					className="list-group">
-					<DisplayGym gym={gym} index={index} />
-				</ul>
+		let displayList;
+		if(list) {
+			displayList = list.map((gym, index) => {
+				return (
+					<ul
+						key={index}
+						className="list-group">
+						<DisplayGym gym={gym} index={index} />
+					</ul>
+				);
+			});
+		} else {
+			displayList = (
+				<h1>Loading list...</h1>
 			);
-		});
+		}
 		return (
 			<div className="scrollable-div">
 				{displayList}

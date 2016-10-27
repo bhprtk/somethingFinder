@@ -9,9 +9,15 @@ class GymResults extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			gymResults: JSON.parse(sessionStorage.gymResults)
-		}
+		// let gymResults = null;
+		//
+		// if(sessionStorage.gymResults) {
+		// 	gymResults = JSON.parse(sessionStorage.gymResults);
+		// }
+		//
+		// this.state = {
+		// 	gymResults
+		// }
 	}
 
 	componentDidMount() {
@@ -21,16 +27,16 @@ class GymResults extends Component {
 		}
 	}
 
-	componentWillReceiveProps(newProps) {
-		sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
-		this.setState({
-			gymResults: JSON.parse(sessionStorage.gymResults)
-		})
-	}
+	// componentWillReceiveProps(newProps) {
+	// 	sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
+	// 	this.setState({
+	// 		gymResults: JSON.parse(sessionStorage.gymResults)
+	// 	})
+	// }
 
 	render() {
-		const { place } = this.props;
-		const { gymResults } = this.state;
+		const { place, gymResults } = this.props;
+		// const { gymResults } = this.state;
 
 		if(!gymResults) {
 			return (
