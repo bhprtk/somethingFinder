@@ -44,9 +44,7 @@
     "request": "^2.75.0",
     "seamless-immutable": "^6.3.0",
     "toastr": "2.1.2",
-    "yelp": "^1.0.1"
-  },
-  "devDependencies": {
+    "yelp": "^1.0.1",
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-loader": "6.2.4",
@@ -85,6 +83,7 @@
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
   },
+  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC"
