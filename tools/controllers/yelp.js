@@ -1,5 +1,4 @@
 import Yelp from 'yelp';
-require('dotenv').load();
 
 const yelp = new Yelp({
   consumer_key: process.env.YELP_CONSUMER_KEY,

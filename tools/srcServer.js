@@ -4,6 +4,7 @@ import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
 import colors from 'colors';
+require('dotenv').load();
 
 /* eslint-disable no-console */
 
