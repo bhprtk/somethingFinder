@@ -17,6 +17,6 @@ export function receiveGymResults(gymResults) {
 export function receiveGymResultsFailure(error) {
 	return {
 		type: types.GYM_RESULTS_FAILURE,
-		gymResults
-	}
+		error
+	};
 }

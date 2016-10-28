@@ -16,7 +16,7 @@ class DisplayGym extends Component {
 	}
 
 	render() {
-		const { gym, index } = this.props;
+		const { gym } = this.props;
 		return (
 			<a
 				className="list-group-item media"
@@ -37,7 +37,8 @@ class DisplayGym extends Component {
 }
 
 DisplayGym.propTypes = {
-	gym: PropTypes.object.isRequired
+	gym: PropTypes.object.isRequired,
+	storeActions: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
@@ -49,7 +50,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
 	return {
 		storeActions: bindActionCreators(storeActions, dispatch)
-	}
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayGym);

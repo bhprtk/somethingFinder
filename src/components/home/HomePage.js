@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {browserHistory} from 'react-router';
+/* eslint-disable react/jsx-no-undef */
+
+import React, {Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { browserHistory } from 'react-router';
 
 import * as nameActions from '../../actions/nameActions';
 import * as yelpActions from '../../actions/yelpActions';
@@ -85,6 +87,12 @@ const styles = {
     fontSize: 20
   }
 };
+
+HomePage.propTypes = {
+  yelpActions: PropTypes.object,
+  nameActions: PropTypes.object,
+  storeActions: PropTypes.object
+}
 
 function mapStateToProps(state, ownProps) {
   return {

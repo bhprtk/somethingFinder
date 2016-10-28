@@ -11,7 +11,7 @@ class GymResultsList extends Component {
 
 	currentGym(e) {
 		// console.log ('e.dataset.index:', e.dataset.index)
-		console.log ('e.target:', e.target)
+		// console.log ('e.target:', e.target)
 	}
 
 	render() {

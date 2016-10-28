@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-undef */
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
@@ -38,6 +40,10 @@ const styles = {
 		height: '50vh',
     width: '100%'
 	}
+};
+
+GoogleMap.propTypes = {
+	currentLocationMarker: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

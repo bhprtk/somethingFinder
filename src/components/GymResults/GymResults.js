@@ -9,15 +9,15 @@ class GymResults extends Component {
 	constructor(props) {
 		super(props);
 
-		// let gymResults = null;
-		//
-		// if(sessionStorage.gymResults) {
-		// 	gymResults = JSON.parse(sessionStorage.gymResults);
-		// }
-		//
-		// this.state = {
-		// 	gymResults
-		// }
+		let gymResults = null;
+
+		if(sessionStorage.gymResults) {
+			gymResults = JSON.parse(sessionStorage.gymResults);
+		}
+
+		this.state = {
+			gymResults
+		};
 	}
 
 	componentDidMount() {
@@ -27,20 +27,22 @@ class GymResults extends Component {
 		}
 	}
 
-	// componentWillReceiveProps(newProps) {
-	// 	sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
-	// 	this.setState({
-	// 		gymResults: JSON.parse(sessionStorage.gymResults)
-	// 	})
-	// }
+	componentWillReceiveProps(newProps) {
+		if(newProps.gymResults !== this.state.gymResults) {
+			sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
+			this.setState({
+				gymResults: JSON.parse(sessionStorage.gymResults)
+			});
+		}
+	}
 
 	render() {
-		const { place, gymResults } = this.props;
-		// const { gymResults } = this.state;
+		const { place } = this.props;
+		const { gymResults } = this.state;
 
 		if(!gymResults) {
 			return (
-				<h1>Loading...</h1>
+				<h1 className="text-center">Loading...</h1>
 			);
 		} else {
 			return (
@@ -66,9 +68,9 @@ const styles = {
 };
 
 GymResults.propTypes = {
-	// place: PropTypes.object.isRequired,
+	place: PropTypes.object,
 	yelpActions: PropTypes.object.isRequired,
-	// gymResults: PropTypes.object.isRequired
+	gymResults: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
