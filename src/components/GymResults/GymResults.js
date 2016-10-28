@@ -22,13 +22,15 @@ class GymResults extends Component {
 
 	componentDidMount() {
 		const { place, yelpActions } = this.props;
+		console.log ('place:', place)
 		if(place) {
 			yelpActions.findGyms(place);
 		}
 	}
 
 	componentWillReceiveProps(newProps) {
-		if(newProps.gymResults !== this.state.gymResults) {
+		if(newProps.gymResults && newProps.gymResults !== this.state.gymResults) {
+			console.log ('newProps:', newProps)
 			sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
 			this.setState({
 				gymResults: JSON.parse(sessionStorage.gymResults)

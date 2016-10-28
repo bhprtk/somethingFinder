@@ -16,6 +16,7 @@ export default (api) => {
 	function* watcher() {
 		while(true) {
 			const input = yield take(types.FIND_GYMS_REQUEST);
+			console.log ('input:', input)
 			yield call(worker, input.place);
 		}
 	}

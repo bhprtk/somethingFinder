@@ -2,11 +2,17 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import compression from 'compression';
+require('dotenv').load();
+
+import bodyParser from 'body-parser';
+
 /*eslint-disable no-console */
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 app.use(express.static('dist'));
 
