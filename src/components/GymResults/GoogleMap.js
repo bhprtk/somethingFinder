@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-undef */
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';

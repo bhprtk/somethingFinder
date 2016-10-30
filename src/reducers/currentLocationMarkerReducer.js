@@ -5,7 +5,8 @@ export const INITIAL_STATE = {currentLocationMarker: null};
 
 export const storeCurrentLocationMarker = (state = INITIAL_STATE, action) => {
 	const { currentLocationMarker } = action;
-	return { ...state, currentLocationMarker };
+	return { currentLocationMarker };
+	// return { ...state, currentLocationMarker };
 }
 
 const ACTION_HANDLERS = {
