@@ -11,17 +11,10 @@ class GoogleMap extends Component {
 	componentWillReceiveProps(newProps) {
 		if(newProps.gymLocations !== this.props.gymLocations && newProps.gymLocations) {
 			const { gymLocations } = newProps;
-			console.log ('gymLocations:', gymLocations)
-			let lats = [];
-			gymLocations.forEach(location => {
-				lats.push(location.lat);
-			});
-			lats.sort();
-			const med = lats[Math.floor(lats.length / 2)];
 
 			const map = new google.maps.Map(this.refs.maphere, {
-				zoom: 8,
-				center: {lat: -28.024, lng: 140.887}
+				zoom: 14,
+				center: gymLocations[Math.floor(gymLocations.length / 2)]
 			});
 
 			const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -66,7 +59,7 @@ class GoogleMap extends Component {
 
 const styles = {
 	maphere: {
-		height: '50vh',
+		height: '100vh',
     width: '100%'
 	}
 };
