@@ -8,7 +8,6 @@ export function findGyms(place) {
 }
 
 export function receiveGymResults(gymResults) {
-	console.log ('gymResults:', gymResults)
 	return {
 		type: types.GYM_RESULTS_SUCCESS,
 		gymResults
