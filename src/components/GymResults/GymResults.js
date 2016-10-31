@@ -9,14 +9,18 @@ class GymResults extends Component {
 	constructor(props) {
 		super(props);
 
-		let gymResults = null;
+		let gymResults = null, gymLocations = null;
 
 		if(sessionStorage.gymResults) {
 			gymResults = JSON.parse(sessionStorage.gymResults);
 		}
+		if(sessionStorage.gymLocations) {
+			gymLocations = JSON.parse(sessionStorage.gymLocations);
+		}
 
 		this.state = {
-			gymResults
+			gymResults,
+			gymLocations
 		};
 	}
 
@@ -34,13 +38,19 @@ class GymResults extends Component {
 				gymResults: JSON.parse(sessionStorage.gymResults)
 			});
 		}
+		if(newProps.gymLocations && newProps.gymLocations !== this.state.gymLocations) {
+			sessionStorage.gymLocations = JSON.stringify(newProps.gymLocations);
+			this.setState({
+				gymLocations: JSON.parse(sessionStorage.gymLocations)
+			});
+		}
 	}
 
 	render() {
 		const { place } = this.props;
-		const { gymResults } = this.state;
+		const { gymResults, gymLocations } = this.state;
 
-		if(!gymResults) {
+		if(!gymResults || !gymLocations) {
 			return (
 				<h1 className="text-center">Loading...</h1>
 			);
@@ -52,7 +62,8 @@ class GymResults extends Component {
 							list={gymResults.businesses} />
 					</div>
 					<div className="col-md-8">
-						<GoogleMap />
+						<GoogleMap
+							gymLocations={gymLocations}/>
 					</div>
 				</div>
 			);
@@ -76,7 +87,8 @@ GymResults.propTypes = {
 function mapStateToProps(state, ownProps) {
 	return {
 		place: state.place.place,
-		gymResults: state.gymResults.gymResults
+		gymResults: state.gymResults.gymResults,
+		gymLocations: state.gymLocations.gymLocations
 	};
 }
 

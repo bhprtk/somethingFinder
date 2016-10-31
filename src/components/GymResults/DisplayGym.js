@@ -41,11 +41,12 @@ const styles = {
 	mapMarker: {
 		color: '#DC5D4E'
 	}
-}
+};
 
 DisplayGym.propTypes = {
 	gym: PropTypes.object.isRequired,
-	storeActions: PropTypes.object
+	storeActions: PropTypes.object,
+	label: PropTypes.string
 };
 
 function mapStateToProps(state, ownProps) {

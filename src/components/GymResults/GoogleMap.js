@@ -8,48 +8,55 @@ class GoogleMap extends Component {
 		super(props);
 	}
 
-	componentWillReceiveProps(newProps) {
-		if(newProps.gymLocations !== this.props.gymLocations && newProps.gymLocations) {
-			const { gymLocations } = newProps;
-
-			const map = new google.maps.Map(this.refs.maphere, {
-				zoom: 14,
-				center: gymLocations[Math.floor(gymLocations.length / 2)]
-			});
-
-			const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-			const markers = gymLocations.map((location, i) => {
-				return new google.maps.Marker({
-					position: location,
-					label: labels[i % labels.length],
-					animation: google.maps.Animation.DROP,
-					map: map
-				});
-			});
-		}
-		// if(newProps.currentLocationMarker !== this.props.currentLocationMarker) {
-		// 	const { currentLocationMarker } = newProps;
-		// 	const center = {
-		// 		lat: currentLocationMarker.coordinate.latitude,
-		// 		lng: currentLocationMarker.coordinate.longitude
-		// 	};
-		// 	const map = new google.maps.Map(this.refs.maphere, {
-		// 		zoom: 16,
-		// 		center: center
-		// 	});
-		// 	// const marker = new google.maps.Marker({
-		// 	// 	position: center,
-		// 	// 	map: map
-		// 	// });
-		//
-		// }
-
-
+	componentWillMount() {
+		console.log ('this.props.gymLocations:', this.props.gymLocations)
 	}
 
+	// componentWillReceiveProps(newProps) {
+	// 	if(newProps.gymLocations !== this.props.gymLocations && newProps.gymLocations) {
+	// 		const { gymLocations } = newProps;
+	//
+	// 		const map = new google.maps.Map(this.refs.maphere, {
+	// 			zoom: 14,
+	// 			center: gymLocations[Math.floor(gymLocations.length / 2)]
+	// 		});
+	//
+	// 		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	//
+	// 		const markers = gymLocations.map((location, i) => {
+	// 			const marker = new google.maps.Marker({
+	// 				position: location,
+	// 				label: labels[i % labels.length],
+	// 				animation: google.maps.Animation.DROP,
+	// 				map: map
+	// 			});
+	// 			marker.addListener('click', function() {
+	// 				console.log('what');
+	// 			})
+	// 			return marker;
+	// 		});
+	// 	}
+	// 	// if(newProps.currentLocationMarker !== this.props.currentLocationMarker) {
+	// 	// 	const { currentLocationMarker } = newProps;
+	// 	// 	const center = {
+	// 	// 		lat: currentLocationMarker.coordinate.latitude,
+	// 	// 		lng: currentLocationMarker.coordinate.longitude
+	// 	// 	};
+	// 	// 	const map = new google.maps.Map(this.refs.maphere, {
+	// 	// 		zoom: 16,
+	// 	// 		center: center
+	// 	// 	});
+	// 	// 	// const marker = new google.maps.Marker({
+	// 	// 	// 	position: center,
+	// 	// 	// 	map: map
+	// 	// 	// });
+	// 	//
+	// 	// }
+	//
+	//
+	// }
+
 	render() {
-		console.log ('this.props.gymLocations:', this.props.gymLocations)
 		return (
 			<div>
 				<div ref="maphere" style={styles.maphere}></div>
@@ -71,8 +78,7 @@ GoogleMap.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-		currentLocationMarker: state.currentLocationMarker.currentLocationMarker,
-		gymLocations: state.gymLocations.gymLocations
+		currentLocationMarker: state.currentLocationMarker.currentLocationMarker
 	};
 }
 
