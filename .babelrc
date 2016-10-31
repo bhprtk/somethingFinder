@@ -1,5 +1,6 @@
 {
   "presets": ["react", "es2015", "stage-2"],
+  "plugins": ["jsx-control-statements"],
   "env": {
     "development": {
       "presets": ["react-hmre"]

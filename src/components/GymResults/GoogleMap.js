@@ -31,8 +31,8 @@ class GoogleMap extends Component {
 			`;
 
 			const infowindow = new google.maps.InfoWindow({
-		    content: contentString
-		  });
+				content: contentString
+			});
 			const marker = new google.maps.Marker({
 				position: location,
 				label: labels[i % labels.length],
@@ -44,7 +44,7 @@ class GoogleMap extends Component {
 			});
 			marker.addListener('mouseout', () => {
 				infowindow.close();
-			})
+			});
 			return marker;
 		});
 	}
