@@ -63,6 +63,7 @@ class GymResults extends Component {
 					</div>
 					<div className="col-md-8">
 						<GoogleMap
+							gymResults={gymResults}
 							gymLocations={gymLocations}/>
 					</div>
 				</div>

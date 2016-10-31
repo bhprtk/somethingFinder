@@ -9,7 +9,8 @@ class GoogleMap extends Component {
 	}
 
 	componentDidMount() {
-		const { gymLocations } = this.props;
+		const { gymLocations, gymResults } = this.props;
+		const results = gymResults.businesses;
 		const map = new google.maps.Map(this.refs.maphere, {
 			zoom: 14,
 			center: gymLocations[Math.floor(gymLocations.length / 2)]
@@ -18,8 +19,19 @@ class GoogleMap extends Component {
 		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 		const markers = gymLocations.map((location, i) => {
+			const name = results[i].name;
+			const ratingImg = results[i].rating_img_url_small;
+			const rating = results[i].rating;
+
+			const contentString = `
+				<strong>${name}</strong>
+				<br />
+				<img src=${ratingImg} />
+				<span>(${rating})</span>
+			`;
+
 			const infowindow = new google.maps.InfoWindow({
-		    content: '<h1>supppp</h1>'
+		    content: contentString
 		  });
 			const marker = new google.maps.Marker({
 				position: location,
@@ -76,7 +88,8 @@ const styles = {
 
 GoogleMap.propTypes = {
 	currentLocationMarker: PropTypes.object,
-	gymLocations: PropTypes.array
+	gymLocations: PropTypes.array,
+	gymResults: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
