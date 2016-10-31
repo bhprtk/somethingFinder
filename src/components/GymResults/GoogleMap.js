@@ -18,14 +18,20 @@ class GoogleMap extends Component {
 		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 		const markers = gymLocations.map((location, i) => {
+			const infowindow = new google.maps.InfoWindow({
+		    content: '<h1>supppp</h1>'
+		  });
 			const marker = new google.maps.Marker({
 				position: location,
 				label: labels[i % labels.length],
 				animation: google.maps.Animation.DROP,
 				map: map
 			});
-			marker.addListener('click', function() {
-				console.log('what');
+			marker.addListener('mouseover', () => {
+				infowindow.open(map, marker);
+			});
+			marker.addListener('mouseout', () => {
+				infowindow.close();
 			})
 			return marker;
 		});
@@ -69,7 +75,8 @@ const styles = {
 };
 
 GoogleMap.propTypes = {
-	currentLocationMarker: PropTypes.object
+	currentLocationMarker: PropTypes.object,
+	gymLocations: PropTypes.array
 };
 
 function mapStateToProps(state, ownProps) {
