@@ -7,6 +7,7 @@ class DisplayGym extends Component {
 	constructor(props) {
 		super(props);
 
+
 		this.currentGym = this.currentGym.bind(this);
 	}
 
