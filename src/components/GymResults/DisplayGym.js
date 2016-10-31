@@ -28,7 +28,6 @@ class DisplayGym extends Component {
 	render() {
 		const { gym, label } = this.props;
 		const { showModal } = this.state;
-
 		return (
 			<div>
 				<a
