@@ -19,7 +19,6 @@ class GymModal extends Component {
 		if(gym.is_closed) {
 			openStatus = "Closed";
 		}
-		console.log ('gym:', gym)
 		return (
 			<Modal show={show} onHide={hide}>
 				<Modal.Header closeButton>
@@ -45,8 +44,7 @@ class GymModal extends Component {
 }
 
 GymModal.propTypes = {
-	show: PropTypes.Boolean,
-	hide: PropTypes.function,
+	hide: PropTypes.func,
 	gym: PropTypes.object
 };
 

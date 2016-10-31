@@ -27,6 +27,7 @@ class DisplayGym extends Component {
 
 	render() {
 		const { gym, label } = this.props;
+		const { showModal } = this.state;
 		return (
 			<div>
 				<a
@@ -46,7 +47,7 @@ class DisplayGym extends Component {
 				</a>
 
 				<GymModal
-					show={this.state.showModal}
+					show={showModal}
 					hide={this.hideModal}
 					gym={gym} />
 			</div>
