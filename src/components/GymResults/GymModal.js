@@ -12,9 +12,12 @@ class GymModal extends Component {
 		const phone = `tel:${gym.phone}`;
 		const unformatted_phone = gym.phone;
 		let formatted_phone = null;
-		console.log ('gym.phone:', gym.phone)
 		if(unformatted_phone) {
 			formatted_phone = `(${unformatted_phone.substring(0, 3)}) ${unformatted_phone.substring(3, 6)}-${unformatted_phone.substring(6)}`;
+		}
+		let openStatus = "Open";
+		if(gym.is_closed) {
+			openStatus = "Closed";
 		}
 		console.log ('gym:', gym)
 		return (
@@ -32,6 +35,9 @@ class GymModal extends Component {
 							<a href={phone}>{formatted_phone}</a>
 						</p>
 					</If>
+					<p>
+						<strong><span className="glyphicon glyphicon-lock"></span><i> {openStatus} </i>Now</strong>
+					</p>
 				</Modal.Body>
 			</Modal>
 		);
