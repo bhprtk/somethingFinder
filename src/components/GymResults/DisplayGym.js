@@ -16,7 +16,7 @@ class DisplayGym extends Component {
 	}
 
 	render() {
-		const { gym } = this.props;
+		const { gym, label } = this.props;
 		return (
 			<a
 				className="list-group-item media"
@@ -28,11 +28,18 @@ class DisplayGym extends Component {
 
 				<div className="media-body">
 					<h4 className="media-heading">{gym.name}</h4>
+					<h4 className="pull-right"><span className="glyphicon glyphicon-map-marker" style={styles.mapMarker}></span>{label}</h4>
 					<img src={gym.rating_img_url} />
 					<p><i>{gym.rating} out of 5 stars.</i></p>
 				</div>
 			</a>
 		);
+	}
+}
+
+const styles = {
+	mapMarker: {
+		color: '#DC5D4E'
 	}
 }
 

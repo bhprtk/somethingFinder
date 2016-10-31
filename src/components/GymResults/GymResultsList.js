@@ -17,13 +17,14 @@ class GymResultsList extends Component {
 	render() {
 		const { list } = this.props;
 		let displayList;
+		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		if(list) {
 			displayList = list.map((gym, index) => {
 				return (
 					<ul
 						key={index}
 						className="list-group">
-						<DisplayGym gym={gym} index={index} />
+						<DisplayGym gym={gym} label={labels[index % labels.length]} />
 					</ul>
 				);
 			});
