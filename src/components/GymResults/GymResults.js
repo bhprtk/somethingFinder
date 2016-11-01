@@ -39,9 +39,10 @@ class GymResults extends Component {
 			});
 		}
 		if(newProps.gymLocations && newProps.gymLocations !== this.state.gymLocations) {
+			console.log ('newProps.gymLocations:', newProps.gymLocations)
 			sessionStorage.gymLocations = JSON.stringify(newProps.gymLocations);
 			this.setState({
-				gymLocations: JSON.parse(sessionStorage.gymLocations)
+				gymLocations: newProps.gymLocations
 			});
 		}
 	}
@@ -49,7 +50,7 @@ class GymResults extends Component {
 	render() {
 		const { place } = this.props;
 		const { gymResults, gymLocations } = this.state;
-
+		console.log ('gymLocations:', gymLocations)
 		if(!gymResults || !gymLocations) {
 			return (
 				<h1 className="text-center">Loading...</h1>
@@ -63,8 +64,8 @@ class GymResults extends Component {
 					</div>
 					<div className="col-md-8">
 						<GoogleMap
-							gymResults={gymResults}
-							gymLocations={gymLocations}/>
+							gymResults={this.state.gymResults}
+							gymLocations={this.state.gymLocations}/>
 					</div>
 				</div>
 			);

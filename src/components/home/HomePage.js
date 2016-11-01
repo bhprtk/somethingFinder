@@ -34,7 +34,6 @@ class HomePage extends Component {
     const {yelpActions, nameActions, storeActions} = this.props;
     const place = autocomplete.getPlace();
     if(place) {
-      console.log ('place:', place)
       let location = {};
       location.lat = place.geometry.location.lat();
       location.lng = place.geometry.location.lng();
@@ -46,13 +45,18 @@ class HomePage extends Component {
 
   getCurrentLocation() {
     this.setState({ loadingPosition: true });
+    const { storeActions } = this.props;
     navigator.geolocation.getCurrentPosition(position => {
       if(position) {
         this.setState({ loadingPosition: false });
-        console.log ('position:', position)
+        const location = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        storeActions.storePlace(location);
+        browserHistory.push("/results");
       }
-    }, error => {
-      console.log ('error:', error)
     });
   }
 

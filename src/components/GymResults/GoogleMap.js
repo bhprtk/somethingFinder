@@ -8,67 +8,48 @@ class GoogleMap extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-		const { gymLocations, gymResults } = this.props;
-		const results = gymResults.businesses;
-		const map = new google.maps.Map(this.refs.maphere, {
-			zoom: 14,
-			center: gymLocations[Math.floor(gymLocations.length / 2)]
-		});
-
-		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-		const markers = gymLocations.map((location, i) => {
-			const name = results[i].name;
-			const ratingImg = results[i].rating_img_url_small;
-			const rating = results[i].rating;
-
-			const contentString = `
-				<strong>${name}</strong>
-				<br />
-				<img src=${ratingImg} />
-				<span>(${rating})</span>
-			`;
-
-			const infowindow = new google.maps.InfoWindow({
-				content: contentString
+	componentWillReceiveProps(newProps) {
+		if(newProps.gymResults && newProps.gymLocations && newProps.gymResults !== this.props.gymResults && newProps.gymLocations !== this.props.gymLocations) {
+			const { gymResults, gymLocations } = newProps;
+			const results = gymResults.businesses;
+			const map = new google.maps.Map(this.refs.maphere, {
+				zoom: 14,
+				center: gymLocations[Math.floor(gymLocations.length / 2)]
 			});
-			const marker = new google.maps.Marker({
-				position: location,
-				label: labels[i % labels.length],
-				animation: google.maps.Animation.DROP,
-				map: map
+
+			const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+			const markers = gymLocations.map((location, i) => {
+				const name = results[i].name;
+				const ratingImg = results[i].rating_img_url_small;
+				const rating = results[i].rating;
+
+				const contentString = `
+					<strong>${name}</strong>
+					<br />
+					<img src=${ratingImg} />
+					<span>(${rating})</span>
+				`;
+
+				const infowindow = new google.maps.InfoWindow({
+					content: contentString
+				});
+				const marker = new google.maps.Marker({
+					position: location,
+					label: labels[i % labels.length],
+					animation: google.maps.Animation.DROP,
+					map: map
+				});
+				marker.addListener('mouseover', () => {
+					infowindow.open(map, marker);
+				});
+				marker.addListener('mouseout', () => {
+					infowindow.close();
+				});
+				return marker;
 			});
-			marker.addListener('mouseover', () => {
-				infowindow.open(map, marker);
-			});
-			marker.addListener('mouseout', () => {
-				infowindow.close();
-			});
-			return marker;
-		});
+		}
 	}
-
-	// componentWillReceiveProps(newProps) {
-	// 	// if(newProps.currentLocationMarker !== this.props.currentLocationMarker) {
-	// 	// 	const { currentLocationMarker } = newProps;
-	// 	// 	const center = {
-	// 	// 		lat: currentLocationMarker.coordinate.latitude,
-	// 	// 		lng: currentLocationMarker.coordinate.longitude
-	// 	// 	};
-	// 	// 	const map = new google.maps.Map(this.refs.maphere, {
-	// 	// 		zoom: 16,
-	// 	// 		center: center
-	// 	// 	});
-	// 	// 	// const marker = new google.maps.Marker({
-	// 	// 	// 	position: center,
-	// 	// 	// 	map: map
-	// 	// 	// });
-	// 	//
-	// 	// }
-	//
-	//
-	// }
 
 	render() {
 		return (
