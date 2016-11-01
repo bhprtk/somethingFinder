@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import compression from 'compression';
-require('dotenv').load();
+// require('dotenv').load();
 
 import bodyParser from 'body-parser';
 
