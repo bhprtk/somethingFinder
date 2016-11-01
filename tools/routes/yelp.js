@@ -16,6 +16,6 @@ router.route('/business')
 		getBusiness()
 			.then(data => res.send(data))
 			.catch(err => res.status(400).send(err));
-	})
+	});
 
 module.exports = router;

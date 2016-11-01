@@ -13,9 +13,14 @@ class HomePage extends Component {
 
   constructor() {
     super();
+
+    this.state = {
+      loadingPosition: false
+    };
+
     this.inputChange = this.inputChange.bind(this);
     this.submitAddress = this.submitAddress.bind(this);
-    this.requestName = this.requestName.bind(this);
+    this.getCurrentLocation = this.getCurrentLocation.bind(this);
   }
 
   inputChange(e) {
@@ -39,11 +44,16 @@ class HomePage extends Component {
     }
   }
 
-  requestName() {
-    const {requestName} = this.props.nameActions;
-    console.log('request name');
-    requestName();
-    console.log ('this.props.name:', this.props.name)
+  getCurrentLocation() {
+    this.setState({ loadingPosition: true });
+    navigator.geolocation.getCurrentPosition(position => {
+      if(position) {
+        this.setState({ loadingPosition: false });
+        console.log ('position:', position)
+      }
+    }, error => {
+      console.log ('error:', error)
+    });
   }
 
   render() {
@@ -51,20 +61,32 @@ class HomePage extends Component {
       <div className="home">
         <p className="text-center title">GYM FINDER</p>
         <div className="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+          <button
+            className="col-md-1 col-sm-1 col-xs-1"
+            style={styles.getCurrentLocationButton}
+            role="button"
+            onClick={this.getCurrentLocation}>
+            <If condition={!this.state.loadingPosition}>
+              <span className="glyphicon glyphicon-map-marker"></span>
+            </If>
+            <If condition={this.state.loadingPosition}>
+              <span className="fa fa-spinner fa-pulse fa-fw"></span>
+            </If>
+          </button>
           <form
             onSubmit={this.submitAddress}>
-              <input
-                style={styles.searchBar}
-                className="col-md-10 col-sm-10 col-xs-10"
-                type="text"
-                placeholder="Enter a location"
-                onChange={this.inputChange}
-                required />
-              <button
-                style={styles.searchButton}
-                className="btn btn-default col-md-2 col-sm-2 col-xs-2">
-                <strong style={styles.buttonText}>Search</strong>
-              </button>
+            <input
+              style={styles.searchBar}
+              className="col-md-9 col-sm-9 col-xs-9"
+              type="text"
+              placeholder="Enter a location"
+              onChange={this.inputChange}
+              required />
+            <button
+              style={styles.searchButton}
+              className="btn btn-default col-md-2 col-sm-2 col-xs-2">
+              <strong style={styles.buttonText}>Search</strong>
+            </button>
           </form>
 
         </div>
@@ -84,6 +106,10 @@ const styles = {
     background: '#90A4AE'
   },
   buttonText: {
+    fontSize: 20
+  },
+  getCurrentLocationButton: {
+    height: 50,
     fontSize: 20
   }
 };
