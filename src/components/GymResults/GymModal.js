@@ -1,15 +1,31 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as mapActions from '../../actions/mapActions';
 
 class GymModal extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			loadingCurrentPosition: false
+		};
+
 		this.getDirections = this.getDirections.bind(this);
 	}
 
 	getDirections() {
-		console.log('getDirections')
+		const { gym, mapActions } = this.props;
+		const { latitude, longitude } = gym.location.coordinate;
+		const origins = `${latitude},${longitude}`;
+		this.setState({ loadingCurrentPosition: true });
+		let destinations;
+		navigator.geolocation.getCurrentPosition(position => {
+			this.setState({ loadingCurrentPosition: false });
+			destinations = `${position.coords.latitude},${position.coords.longitude}`;
+			mapActions.getDistance({ origins, destinations });
+    });
 	}
 
 	render() {
@@ -32,7 +48,12 @@ class GymModal extends Component {
 					<button
 						className="pull-right btn btn-default"
 						onClick={this.getDirections}>
-						Get Directions
+						<If condition={!this.state.loadingCurrentPosition}>
+							Get Directions
+						</If>
+						<If condition={this.state.loadingCurrentPosition}>
+							<span className="fa fa-spinner fa-pulse fa-fw"></span>
+						</If>
 					</button>
 				</Modal.Header>
 				<Modal.Body>
@@ -56,7 +77,20 @@ class GymModal extends Component {
 
 GymModal.propTypes = {
 	hide: PropTypes.func,
-	gym: PropTypes.object
+	gym: PropTypes.object,
+	mapActions: PropTypes.object
 };
 
-export default GymModal;
+function mapStateToProps(state, ownProps) {
+	return {
+
+	};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		mapActions: bindActionCreators(mapActions, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GymModal);

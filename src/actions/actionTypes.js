@@ -10,4 +10,7 @@ export default createTypes(`
 
 	STORE_PLACE
 	STORE_LOCATION_MARKER
+	STORE_CURRENT_LOCATION
+
+	GET_DISTANCE
 `);

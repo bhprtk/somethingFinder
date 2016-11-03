@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable jsx-control-statements/jsx-jcs-no-undef */
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -9,6 +10,7 @@ class GoogleMap extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
+		console.log ('newProps:', newProps)
 		if(newProps.gymResults && newProps.gymLocations && newProps.gymResults !== this.props.gymResults && newProps.gymLocations !== this.props.gymLocations) {
 			const { gymResults, gymLocations } = newProps;
 			const results = gymResults.businesses;

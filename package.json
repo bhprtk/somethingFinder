@@ -76,6 +76,7 @@
     "redux-thunk": "2.0.1",
     "reduxsauce": "^0.2.0",
     "request": "^2.75.0",
+    "request-promise": "^4.1.1",
     "rimraf": "2.5.2",
     "seamless-immutable": "^6.3.0",
     "style-loader": "0.13.1",

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import * as nameActions from '../../actions/nameActions';
 import * as yelpActions from '../../actions/yelpActions';
 import * as storeActions from '../../actions/storeActions';
 
@@ -15,7 +14,8 @@ class HomePage extends Component {
     super();
 
     this.state = {
-      loadingPosition: false
+      loadingPosition: false,
+      loadingCurrentLocation: false
     };
 
     this.inputChange = this.inputChange.bind(this);
@@ -31,8 +31,9 @@ class HomePage extends Component {
   submitAddress(e) {
     e.preventDefault();
     const {autocomplete} = this.state;
-    const {yelpActions, nameActions, storeActions} = this.props;
+    const {yelpActions, storeActions} = this.props;
     const place = autocomplete.getPlace();
+
     if(place) {
       let location = {};
       location.lat = place.geometry.location.lat();
@@ -89,7 +90,7 @@ class HomePage extends Component {
             <button
               style={styles.searchButton}
               className="btn btn-default col-md-2 col-sm-2 col-xs-2">
-              <strong style={styles.buttonText}>Search</strong>
+                <strong style={styles.buttonText}>Search</strong>
             </button>
           </form>
 
@@ -120,7 +121,6 @@ const styles = {
 
 HomePage.propTypes = {
   yelpActions: PropTypes.object,
-  nameActions: PropTypes.object,
   storeActions: PropTypes.object
 }
 
@@ -132,7 +132,6 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    nameActions: bindActionCreators(nameActions, dispatch),
     yelpActions: bindActionCreators(yelpActions, dispatch),
     storeActions: bindActionCreators(storeActions, dispatch)
   }
