@@ -16,24 +16,25 @@ class GymModal extends Component {
 	}
 
 	getDirections() {
-		const { gym, mapActions } = this.props;
-		const { latitude, longitude } = gym.location.coordinate;
-		const origins = `${latitude},${longitude}`;
-		this.setState({ loadingCurrentPosition: true });
-		let destinations;
-		navigator.geolocation.getCurrentPosition(position => {
-			this.setState({ loadingCurrentPosition: false });
-			destinations = `${position.coords.latitude},${position.coords.longitude}`;
-			mapActions.getDistance({ origins, destinations });
-    });
+		console.log('supp');
+		// const { gym, mapActions } = this.props;
+		// const { latitude, longitude } = gym.location.coordinate;
+		// const origins = `${latitude},${longitude}`;
+		// this.setState({ loadingCurrentPosition: true });
+		// let destinations;
+		// navigator.geolocation.getCurrentPosition(position => {
+		// 	this.setState({ loadingCurrentPosition: false });
+		// 	destinations = `${position.coords.latitude},${position.coords.longitude}`;
+		// 	mapActions.getDistance({ origins, destinations });
+    // });
 	}
 
 	render() {
 		const { show, hide, gym, distance } = this.props;
-		console.log ('distance:', distance)
 		const address = `${gym.location.address[0]}, ${gym.location.city}, ${gym.location.state_code} ${gym.location.postal_code}`;
 		const phone = `tel:${gym.phone}`;
 		const unformatted_phone = gym.phone;
+		const miles = (distance.distance.value * 0.000621371).toFixed(1);
 		let formatted_phone = null;
 		if(unformatted_phone) {
 			formatted_phone = `(${unformatted_phone.substring(0, 3)}) ${unformatted_phone.substring(3, 6)}-${unformatted_phone.substring(6)}`;
@@ -70,9 +71,9 @@ class GymModal extends Component {
 					<p>
 						<strong><span className="glyphicon glyphicon-lock"></span><i> {openStatus} </i>Now</strong>
 					</p>
-					<If condition={distance}>
-						<p>{distance.distance.text}</p>
-					</If>
+					<p>
+						<strong><span className="fa fa-location-arrow"></span> {miles}</strong> miles away
+					</p>
 				</Modal.Body>
 			</Modal>
 		);
@@ -87,7 +88,7 @@ GymModal.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-		distance: state.distance.distance
+
 	};
 }
 

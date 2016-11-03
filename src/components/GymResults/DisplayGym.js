@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as storeActions from '../../actions/storeActions';
+import * as mapActions from '../../actions/mapActions';
 
 import GymModal from './GymModal';
 
@@ -18,6 +19,10 @@ class DisplayGym extends Component {
 	}
 
 	showModal() {
+		const { mapActions, gym, currentLocation } = this.props;
+		const origins = `${currentLocation.lat},${currentLocation.lng}`;
+		const destinations = `${gym.location.coordinate.latitude},${gym.location.coordinate.longitude}`;
+		mapActions.getDistance({ origins, destinations });
 		this.setState({ showModal: true });
 	}
 
@@ -26,7 +31,7 @@ class DisplayGym extends Component {
 	}
 
 	render() {
-		const { gym, label } = this.props;
+		const { gym, label, currentLocation, distance } = this.props;
 		const { showModal } = this.state;
 		return (
 			<div>
@@ -49,7 +54,8 @@ class DisplayGym extends Component {
 				<GymModal
 					show={showModal}
 					hide={this.hideModal}
-					gym={gym} />
+					gym={gym}
+					distance={distance} />
 			</div>
 		);
 	}
@@ -69,13 +75,15 @@ DisplayGym.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-
+		currentLocation: state.currentLocation.currentLocation,
+		distance: state.distance.distance
 	};
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		storeActions: bindActionCreators(storeActions, dispatch)
+		storeActions: bindActionCreators(storeActions, dispatch),
+		mapActions: bindActionCreators(mapActions, dispatch)
 	};
 }
 
