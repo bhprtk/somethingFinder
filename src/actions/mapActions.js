@@ -6,3 +6,10 @@ export function getDistance(data) {
 		data
 	};
 }
+
+export function receiveDistanceResults(distance) {
+	return {
+		type: types.DISTANCE_RESULTS_SUCCESS,
+		distance
+	};
+}

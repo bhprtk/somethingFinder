@@ -29,7 +29,8 @@ class GymModal extends Component {
 	}
 
 	render() {
-		const { show, hide, gym } = this.props;
+		const { show, hide, gym, distance } = this.props;
+		console.log ('distance:', distance)
 		const address = `${gym.location.address[0]}, ${gym.location.city}, ${gym.location.state_code} ${gym.location.postal_code}`;
 		const phone = `tel:${gym.phone}`;
 		const unformatted_phone = gym.phone;
@@ -69,6 +70,9 @@ class GymModal extends Component {
 					<p>
 						<strong><span className="glyphicon glyphicon-lock"></span><i> {openStatus} </i>Now</strong>
 					</p>
+					<If condition={distance}>
+						<p>{distance.distance.text}</p>
+					</If>
 				</Modal.Body>
 			</Modal>
 		);
@@ -83,7 +87,7 @@ GymModal.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-
+		distance: state.distance.distance
 	};
 }
 

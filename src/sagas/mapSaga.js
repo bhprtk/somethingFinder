@@ -6,8 +6,9 @@ export default (api) => {
 
 	function* worker(data) {
 		const distance = yield call(api.getDistance, data);
-		console.log ('distance:', distance)
-
+		if(distance.status === 200) {
+			yield put(mapActions.receiveDistanceResults(distance.data));
+		}
 	}
 
 	function* watcher() {

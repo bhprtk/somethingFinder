@@ -13,4 +13,5 @@ export default createTypes(`
 	STORE_CURRENT_LOCATION
 
 	GET_DISTANCE
+	DISTANCE_RESULTS_SUCCESS
 `);
