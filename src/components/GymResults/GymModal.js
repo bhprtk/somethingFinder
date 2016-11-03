@@ -11,22 +11,6 @@ class GymModal extends Component {
 		this.state = {
 			loadingCurrentPosition: false
 		};
-
-		this.getDirections = this.getDirections.bind(this);
-	}
-
-	getDirections() {
-		console.log('supp');
-		// const { gym, mapActions } = this.props;
-		// const { latitude, longitude } = gym.location.coordinate;
-		// const origins = `${latitude},${longitude}`;
-		// this.setState({ loadingCurrentPosition: true });
-		// let destinations;
-		// navigator.geolocation.getCurrentPosition(position => {
-		// 	this.setState({ loadingCurrentPosition: false });
-		// 	destinations = `${position.coords.latitude},${position.coords.longitude}`;
-		// 	mapActions.getDistance({ origins, destinations });
-    // });
 	}
 
 	render() {
@@ -47,16 +31,13 @@ class GymModal extends Component {
 			<Modal show={show} onHide={hide}>
 				<Modal.Header>
 					<Modal.Title className="pull-left">{gym.name}</Modal.Title>
-					<button
+					<a
 						className="pull-right btn btn-default"
-						onClick={this.getDirections}>
-						<If condition={!this.state.loadingCurrentPosition}>
-							Get Directions
-						</If>
-						<If condition={this.state.loadingCurrentPosition}>
-							<span className="fa fa-spinner fa-pulse fa-fw"></span>
-						</If>
-					</button>
+						onClick={this.getDirections}
+						target="_blank"
+						href={gym.url}>
+						View on Yelp
+					</a>
 				</Modal.Header>
 				<Modal.Body>
 					<p>
