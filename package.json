@@ -68,6 +68,7 @@
     "react-redux": "4.4.5",
     "react-router": "2.4.0",
     "react-router-redux": "4.0.4",
+    "react-spinkit": "^1.1.11",
     "redux": "3.5.2",
     "redux-immutable-state-invariant": "1.2.3",
     "redux-logger": "^2.7.0",

@@ -4,6 +4,7 @@ import React, {Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import Spinner from 'react-spinkit';
 
 import * as yelpActions from '../../actions/yelpActions';
 import * as storeActions from '../../actions/storeActions';
@@ -38,9 +39,20 @@ class HomePage extends Component {
       let location = {};
       location.lat = place.geometry.location.lat();
       location.lng = place.geometry.location.lng();
-
-      storeActions.storePlace(location);
-      browserHistory.push("/results");
+      this.setState({ loadingCurrentLocation: true });
+      navigator.geolocation.getCurrentPosition(position => {
+        if(position) {
+          this.setState({ loadingCurrentLocation: false });
+          const currentLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          console.log ('currentLocation:', currentLocation)
+          storeActions.storeCurrentLocation(currentLocation);
+          storeActions.storePlace(location);
+          browserHistory.push("/results");
+        }
+      });
     }
   }
 
@@ -75,7 +87,7 @@ class HomePage extends Component {
               <span className="glyphicon glyphicon-map-marker"></span>
             </If>
             <If condition={this.state.loadingPosition}>
-              <span className="fa fa-spinner fa-pulse fa-fw"></span>
+              <Spinner spinnerName="double-bounce" />
             </If>
           </button>
           <form
@@ -90,7 +102,12 @@ class HomePage extends Component {
             <button
               style={styles.searchButton}
               className="btn btn-default col-md-2 col-sm-2 col-xs-2">
+              <If condition={!this.state.loadingCurrentLocation}>
                 <strong style={styles.buttonText}>Search</strong>
+              </If>
+              <If condition={this.state.loadingCurrentLocation}>
+                <Spinner spinnerName="three-bounce" />
+              </If>
             </button>
           </form>
 
