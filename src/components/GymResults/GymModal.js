@@ -4,6 +4,12 @@ import { Modal } from 'react-bootstrap';
 class GymModal extends Component {
 	constructor(props) {
 		super(props);
+
+		this.getDirections = this.getDirections.bind(this);
+	}
+
+	getDirections() {
+		console.log('getDirections')
 	}
 
 	render() {
@@ -21,8 +27,13 @@ class GymModal extends Component {
 		}
 		return (
 			<Modal show={show} onHide={hide}>
-				<Modal.Header closeButton>
-					<Modal.Title>{gym.name}</Modal.Title>
+				<Modal.Header>
+					<Modal.Title className="pull-left">{gym.name}</Modal.Title>
+					<button
+						className="pull-right btn btn-default"
+						onClick={this.getDirections}>
+						Get Directions
+					</button>
 				</Modal.Header>
 				<Modal.Body>
 					<p>
