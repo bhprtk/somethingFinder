@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
+/* eslint-disable jsx-control-statements/jsx-jcs-no-undef */
 
 import React, {Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -47,7 +48,6 @@ class HomePage extends Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          console.log ('currentLocation:', currentLocation)
           storeActions.storeCurrentLocation(currentLocation);
           storeActions.storePlace(location);
           browserHistory.push("/results");
@@ -66,7 +66,7 @@ class HomePage extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
+        storeActions.storeCurrentLocation(location);
         storeActions.storePlace(location);
         browserHistory.push("/results");
       }

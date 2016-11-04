@@ -16,6 +16,11 @@ class DisplayGym extends Component {
 
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
+		this.showMarkerOnMap = this.showMarkerOnMap.bind(this);
+	}
+
+	showMarkerOnMap() {
+		const { gym } = this.props;
 	}
 
 	showModal() {
@@ -38,16 +43,19 @@ class DisplayGym extends Component {
 				<a
 					className="list-group-item media"
 					onClick={this.showModal}
-					role="button">
-					<div className="media-left">
-						<img className="media-object" src={gym.image_url}/>
-					</div>
+					role="button"
+					onMouseEnter={this.showMarkerOnMap}>
+					<div>
+						<div className="media-left">
+							<img className="media-object" src={gym.image_url}/>
+						</div>
 
-					<div className="media-body">
-						<h4 className="media-heading">{gym.name}</h4>
-						<h4 className="pull-right"><span className="glyphicon glyphicon-map-marker" style={styles.mapMarker}></span>{label}</h4>
-						<img src={gym.rating_img_url} />
-						<p><i>{gym.rating} out of 5 stars.</i></p>
+						<div className="media-body">
+							<h4 className="media-heading">{gym.name}</h4>
+							<h4 className="pull-right"><span className="glyphicon glyphicon-map-marker" style={styles.mapMarker}></span>{label}</h4>
+							<img src={gym.rating_img_url} />
+							<p><i>{gym.rating} out of 5 stars.</i></p>
+						</div>
 					</div>
 				</a>
 

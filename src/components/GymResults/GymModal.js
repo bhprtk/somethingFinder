@@ -18,7 +18,10 @@ class GymModal extends Component {
 		const address = `${gym.location.address[0]}, ${gym.location.city}, ${gym.location.state_code} ${gym.location.postal_code}`;
 		const phone = `tel:${gym.phone}`;
 		const unformatted_phone = gym.phone;
-		const miles = (distance.distance.value * 0.000621371).toFixed(1);
+		let miles;
+		if(distance) {
+			miles = (distance.distance.value * 0.000621371).toFixed(1);
+		}
 		let formatted_phone = null;
 		if(unformatted_phone) {
 			formatted_phone = `(${unformatted_phone.substring(0, 3)}) ${unformatted_phone.substring(3, 6)}-${unformatted_phone.substring(6)}`;
@@ -52,9 +55,11 @@ class GymModal extends Component {
 					<p>
 						<strong><span className="glyphicon glyphicon-lock"></span><i> {openStatus} </i>Now</strong>
 					</p>
-					<p>
-						<strong><span className="fa fa-location-arrow"></span> {miles}</strong> miles away
-					</p>
+					<If condition={miles}>
+						<p>
+							<strong><span className="fa fa-location-arrow"></span> {miles}</strong> miles away
+							</p>
+					</If>
 				</Modal.Body>
 			</Modal>
 		);

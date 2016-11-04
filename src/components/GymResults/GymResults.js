@@ -22,6 +22,8 @@ class GymResults extends Component {
 			gymResults,
 			gymLocations
 		};
+
+		this.showMarkerOnHover = this.showMarkerOnHover.bind(this);
 	}
 
 	componentDidMount() {
@@ -29,6 +31,10 @@ class GymResults extends Component {
 		if(place) {
 			yelpActions.findGyms(place);
 		}
+	}
+
+	showMarkerOnHover() {
+
 	}
 
 	componentWillReceiveProps(newProps) {
@@ -39,7 +45,6 @@ class GymResults extends Component {
 			});
 		}
 		if(newProps.gymLocations && newProps.gymLocations !== this.state.gymLocations) {
-			console.log ('newProps.gymLocations:', newProps.gymLocations)
 			sessionStorage.gymLocations = JSON.stringify(newProps.gymLocations);
 			this.setState({
 				gymLocations: newProps.gymLocations
@@ -50,7 +55,6 @@ class GymResults extends Component {
 	render() {
 		const { place } = this.props;
 		const { gymResults, gymLocations } = this.state;
-		console.log ('gymLocations:', gymLocations)
 		if(!gymResults || !gymLocations) {
 			return (
 				<h1 className="text-center">Loading...</h1>
@@ -64,6 +68,7 @@ class GymResults extends Component {
 					</div>
 					<div className="col-md-8">
 						<GoogleMap
+							showMarkerOnHover={this.showMarkerOnHover}
 							gymResults={this.state.gymResults}
 							gymLocations={this.state.gymLocations}/>
 					</div>
