@@ -21,5 +21,9 @@
 
 ```sh
 git clone https://github.com/bhprtk/somethingFinder
+```
+```sh
 npm install
 ```
+## Usage
+This app uses the Yelp API with NodeJS. Anyone who would like to build their own finder could simply change what to look for in the tools/controllers/yelp.js file.
