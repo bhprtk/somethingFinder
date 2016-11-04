@@ -11,8 +11,15 @@
 * Redux
 * NodeJS
 * Google Maps
-..* Autocomplete
-..* Markers
-..* Distance Matrix
+⋅⋅* Autocomplete
+⋅⋅* Markers
+⋅⋅* Distance Matrix
 * Yelp API
 * Heroku
+
+## Installation
+
+```sh
+git clone https://github.com/bhprtk/somethingFinder
+npm install
+```
