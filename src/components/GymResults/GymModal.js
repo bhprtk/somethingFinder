@@ -69,7 +69,8 @@ class GymModal extends Component {
 GymModal.propTypes = {
 	hide: PropTypes.func,
 	gym: PropTypes.object,
-	mapActions: PropTypes.object
+	mapActions: PropTypes.object,
+	distance: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
@@ -81,7 +82,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
 	return {
 		mapActions: bindActionCreators(mapActions, dispatch)
-	}
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GymModal);

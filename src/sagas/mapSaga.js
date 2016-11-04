@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { take, call, put } from 'redux-saga/effects';
 import types from '../actions/actionTypes';
 import * as mapActions from '../actions/mapActions';
@@ -21,5 +22,5 @@ export default (api) => {
 	return {
 		watcher,
 		worker
-	}
+	};
 };

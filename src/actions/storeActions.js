@@ -18,5 +18,5 @@ export function storeCurrentLocation(currentLocation) {
 	return {
 		type: types.STORE_CURRENT_LOCATION,
 		currentLocation
-	}
+	};
 }

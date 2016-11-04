@@ -20,6 +20,17 @@ class GoogleMap extends Component {
 		this.buildMap();
 	}
 
+	componentWillReceiveProps(newProps) {
+		if(newProps.gymResults && newProps.gymLocations && newProps.gymResults !== this.props.gymResults && newProps.gymLocations !== this.props.gymLocations) {
+			this.setState({
+				gymResults: newProps.gymResults,
+				gymLocations: newProps.gymLocations
+			}, () => {
+				this.buildMap();
+			});
+		}
+	}
+
 	buildMap() {
 		const { gymResults, gymLocations } = this.state;
 		const results = gymResults.businesses;
@@ -61,18 +72,6 @@ class GoogleMap extends Component {
 		});
 	}
 
-	componentWillReceiveProps(newProps) {
-		if(newProps.gymResults && newProps.gymLocations && newProps.gymResults !== this.props.gymResults && newProps.gymLocations !== this.props.gymLocations) {
-			console.log ('newProps:', newProps)
-			this.setState({
-				gymResults: newProps.gymResults,
-				gymLocations: newProps.gymLocations
-			}, () => {
-				this.buildMap();
-			});
-		}
-	}
-
 	render() {
 		return (
 			<div>
@@ -84,7 +83,7 @@ class GoogleMap extends Component {
 
 const styles = {
 	maphere: {
-		height: '100vh',
+		height: '85vh',
     width: '100%'
 	}
 };

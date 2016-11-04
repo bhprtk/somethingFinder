@@ -3,8 +3,8 @@ body {
 }
 
 .scrollable-div {
-    height: 100vh;
-    overflow-y: auto;
+  height: 85vh;
+  overflow-y: auto;
 }
 
 .title {
@@ -14,13 +14,24 @@ body {
 	font-family: 'Acme', sans-serif;
 	/*font-family: 'Archivo Black', sans-serif;*/
 	/*font-family: 'Alfa Slab One', cursive;*/
+}
 
+.navbar-brand {
+	font-family: 'Acme', sans-serif;
+}
+
+.dumbell-image {
+	height: 50px;
+	width: 50px;
+	float: left;
+	margin-top: -15px;
+	margin-right: 10px;
 }
 
 .home {
 	margin-top: -20px;
 	padding-top: 30vh;
-	background-image: url('http://i.imgur.com/R8ZCRUj.jpg');
+	background-image: url('../assets/gymBackground.jpg');
 	height: 105vh;
 	width: 100%;
 }

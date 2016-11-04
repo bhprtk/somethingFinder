@@ -37,15 +37,14 @@ class DisplayGym extends Component {
 	}
 
 	render() {
-		const { gym, label, distance, showMarkerOnHover } = this.props;
+		const { gym, label, distance } = this.props;
 		const { showModal } = this.state;
 		return (
 			<div>
 				<a
 					className="list-group-item media"
 					onClick={this.showModal}
-					role="button"
-					onMouseEnter={showMarkerOnHover}>
+					role="button">
 					<div>
 						<div className="media-left">
 							<img className="media-object" src={gym.image_url}/>
@@ -79,7 +78,10 @@ const styles = {
 DisplayGym.propTypes = {
 	gym: PropTypes.object.isRequired,
 	storeActions: PropTypes.object,
-	label: PropTypes.string
+	label: PropTypes.string,
+	mapActions: PropTypes.object,
+	currentLocation: PropTypes.object,
+	distance: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as yelpActions from '../../actions/yelpActions';
 import GymResultsList from './GymResultsList';
 import GoogleMap from './GoogleMap';
+import NavBar from './NavBar';
 
 class GymResults extends Component {
 	constructor(props) {
@@ -22,8 +23,6 @@ class GymResults extends Component {
 			gymResults,
 			gymLocations
 		};
-
-		this.showMarkerOnHover = this.showMarkerOnHover.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,10 +30,6 @@ class GymResults extends Component {
 		if(place) {
 			yelpActions.findGyms(place);
 		}
-	}
-
-	showMarkerOnHover() {
-		console.log('showMarkerOnHover')
 	}
 
 	componentWillReceiveProps(newProps) {
@@ -55,24 +50,24 @@ class GymResults extends Component {
 	render() {
 		const { place } = this.props;
 		const { gymResults, gymLocations } = this.state;
-		console.log ('gymResults:', gymResults)
-		console.log ('gymLocations:', gymLocations)
 		if(!gymResults || !gymLocations) {
 			return (
 				<h1 className="text-center">Loading...</h1>
 			);
 		} else {
 			return (
-				<div className="container-fluid" style={styles.container}>
-					<div className="col-md-4">
-						<GymResultsList
-							list={gymResults.businesses}
-							showMarkerOnHover={this.showMarkerOnHover} />
-					</div>
-					<div className="col-md-8">
-						<GoogleMap
-							gymResults={this.state.gymResults}
-							gymLocations={this.state.gymLocations}/>
+				<div>
+					<NavBar />
+					<div className="container-fluid" style={styles.container}>
+						<div className="col-md-4">
+							<GymResultsList
+								list={gymResults.businesses} />
+						</div>
+						<div className="col-md-8">
+							<GoogleMap
+								gymResults={this.state.gymResults}
+								gymLocations={this.state.gymLocations}/>
+						</div>
 					</div>
 				</div>
 			);
@@ -82,7 +77,6 @@ class GymResults extends Component {
 
 const styles = {
 	container: {
-		paddingTop: 10,
 		color: '#696969'
 	}
 };

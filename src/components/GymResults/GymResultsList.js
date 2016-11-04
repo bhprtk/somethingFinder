@@ -15,7 +15,7 @@ class GymResultsList extends Component {
 	}
 
 	render() {
-		const { list, showMarkerOnHover } = this.props;
+		const { list } = this.props;
 		let displayList;
 		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		if(list) {
@@ -26,8 +26,7 @@ class GymResultsList extends Component {
 						className="list-group">
 						<DisplayGym
 							gym={gym}
-							label={labels[index % labels.length]}
-							showMarkerOnHover={showMarkerOnHover} />
+							label={labels[index % labels.length]}/>
 					</ul>
 				);
 			});
