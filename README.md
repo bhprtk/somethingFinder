@@ -12,8 +12,8 @@
 * NodeJS
 * Google Maps
   * Autocomplete
-	* Markers
-	* Distance Matrix
+  * Markers
+  * Distance Matrix
 * Yelp API
 * Heroku
 
