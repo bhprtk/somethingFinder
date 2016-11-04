@@ -11,9 +11,9 @@
 * Redux
 * NodeJS
 * Google Maps
-⋅⋅* Autocomplete
-⋅⋅* Markers
-⋅⋅* Distance Matrix
+  * Autocomplete
+	* Markers
+	* Distance Matrix
 * Yelp API
 * Heroku
 
@@ -26,4 +26,8 @@ git clone https://github.com/bhprtk/somethingFinder
 npm install
 ```
 ## Usage
+To run the dev environment just use the following command
+```sh
+npm start
+```
 This app uses the Yelp API with NodeJS. Anyone who would like to build their own finder could simply change what to look for in the tools/controllers/yelp.js file.
