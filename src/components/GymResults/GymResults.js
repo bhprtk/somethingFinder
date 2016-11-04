@@ -34,7 +34,7 @@ class GymResults extends Component {
 	}
 
 	showMarkerOnHover() {
-
+		console.log('showMarkerOnHover')
 	}
 
 	componentWillReceiveProps(newProps) {
@@ -64,11 +64,11 @@ class GymResults extends Component {
 				<div className="container-fluid" style={styles.container}>
 					<div className="col-md-4">
 						<GymResultsList
-							list={gymResults.businesses} />
+							list={gymResults.businesses}
+							showMarkerOnHover={this.showMarkerOnHover} />
 					</div>
 					<div className="col-md-8">
 						<GoogleMap
-							showMarkerOnHover={this.showMarkerOnHover}
 							gymResults={this.state.gymResults}
 							gymLocations={this.state.gymLocations}/>
 					</div>

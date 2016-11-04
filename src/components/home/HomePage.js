@@ -48,6 +48,7 @@ class HomePage extends Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+          sessionStorage.currentLocation = JSON.stringify(currentLocation);
           storeActions.storeCurrentLocation(currentLocation);
           storeActions.storePlace(location);
           browserHistory.push("/results");
@@ -66,6 +67,7 @@ class HomePage extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
+        sessionStorage.currentLocation = JSON.stringify(location);
         storeActions.storeCurrentLocation(location);
         storeActions.storePlace(location);
         browserHistory.push("/results");

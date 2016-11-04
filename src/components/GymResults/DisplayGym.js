@@ -16,15 +16,16 @@ class DisplayGym extends Component {
 
 		this.showModal = this.showModal.bind(this);
 		this.hideModal = this.hideModal.bind(this);
-		this.showMarkerOnMap = this.showMarkerOnMap.bind(this);
-	}
-
-	showMarkerOnMap() {
-		const { gym } = this.props;
 	}
 
 	showModal() {
-		const { mapActions, gym, currentLocation } = this.props;
+		const { mapActions, gym } = this.props;
+		let currentLocation;
+		if(!this.props.currentLocation) {
+			currentLocation = JSON.parse(sessionStorage.currentLocation);
+		} else {
+			currentLocation = this.props.currentLocation;
+		}
 		const origins = `${currentLocation.lat},${currentLocation.lng}`;
 		const destinations = `${gym.location.coordinate.latitude},${gym.location.coordinate.longitude}`;
 		mapActions.getDistance({ origins, destinations });
@@ -36,7 +37,7 @@ class DisplayGym extends Component {
 	}
 
 	render() {
-		const { gym, label, currentLocation, distance } = this.props;
+		const { gym, label, distance, showMarkerOnHover } = this.props;
 		const { showModal } = this.state;
 		return (
 			<div>
@@ -44,7 +45,7 @@ class DisplayGym extends Component {
 					className="list-group-item media"
 					onClick={this.showModal}
 					role="button"
-					onMouseEnter={this.showMarkerOnMap}>
+					onMouseEnter={showMarkerOnHover}>
 					<div>
 						<div className="media-left">
 							<img className="media-object" src={gym.image_url}/>

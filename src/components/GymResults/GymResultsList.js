@@ -15,7 +15,7 @@ class GymResultsList extends Component {
 	}
 
 	render() {
-		const { list } = this.props;
+		const { list, showMarkerOnHover } = this.props;
 		let displayList;
 		const labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		if(list) {
@@ -24,7 +24,10 @@ class GymResultsList extends Component {
 					<ul
 						key={index}
 						className="list-group">
-						<DisplayGym gym={gym} label={labels[index % labels.length]} />
+						<DisplayGym
+							gym={gym}
+							label={labels[index % labels.length]}
+							showMarkerOnHover={showMarkerOnHover} />
 					</ul>
 				);
 			});
@@ -42,7 +45,8 @@ class GymResultsList extends Component {
 }
 
 GymResultsList.propTypes = {
-	list: PropTypes.array.isRequired
+	list: PropTypes.array.isRequired,
+	showMarkerOnHover: PropTypes.func
 };
 
 export default GymResultsList;

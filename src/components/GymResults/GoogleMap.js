@@ -17,14 +17,12 @@ class GoogleMap extends Component {
 	}
 
 	componentDidMount() {
-		// this.buildMap();
+		this.buildMap();
 	}
 
 	buildMap() {
 		const { gymResults, gymLocations } = this.state;
-		console.log ('this.state:', this.state)
 		const results = gymResults.businesses;
-		console.log ('results:', results)
 		const map = new google.maps.Map(this.refs.maphere, {
 			zoom: 14,
 			center: gymLocations[Math.floor(gymLocations.length / 2)]
@@ -73,7 +71,6 @@ class GoogleMap extends Component {
 				this.buildMap();
 			});
 		}
-
 	}
 
 	render() {
