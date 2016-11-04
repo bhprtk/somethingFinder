@@ -52,7 +52,7 @@ class GymResults extends Component {
 		const { gymResults, gymLocations } = this.state;
 		if(!gymResults || !gymLocations) {
 			return (
-				<h1 className="text-center">Loading...</h1>
+				<div className="loading-screen"></div>
 			);
 		} else {
 			return (

@@ -27,7 +27,7 @@ export default {
     loaders: [
       {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
       {test: /(\.css)$/, loaders: ['style', 'css']},
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+      { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192' },
       // all below are for bootstrap
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},

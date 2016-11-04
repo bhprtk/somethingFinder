@@ -20,6 +20,14 @@ body {
 	font-family: 'Acme', sans-serif;
 }
 
+.loading-screen {
+	height: 100vh;
+	background-image: url('../assets/loadingScreen.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
 .dumbell-image {
 	height: 50px;
 	width: 50px;
