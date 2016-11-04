@@ -41,7 +41,7 @@ class GymResults extends Component {
 		if(newProps.gymResults && newProps.gymResults !== this.state.gymResults) {
 			sessionStorage.gymResults = JSON.stringify(newProps.gymResults);
 			this.setState({
-				gymResults: JSON.parse(sessionStorage.gymResults)
+				gymResults: newProps.gymResults
 			});
 		}
 		if(newProps.gymLocations && newProps.gymLocations !== this.state.gymLocations) {
@@ -55,6 +55,8 @@ class GymResults extends Component {
 	render() {
 		const { place } = this.props;
 		const { gymResults, gymLocations } = this.state;
+		console.log ('gymResults:', gymResults)
+		console.log ('gymLocations:', gymLocations)
 		if(!gymResults || !gymLocations) {
 			return (
 				<h1 className="text-center">Loading...</h1>

@@ -8,7 +8,7 @@ const GLOBALS = {
 
 export default {
   debug: true, // display debug information
-  devtool: 'source-map',
+  devtool: 'cheap-eval-source-map',
   noInfo: false, // webpack will display all the files it's bundling
   entry: './src/index', // entry point should be last, order is important
   target: 'web', // we are targeting the browser, we can also use node to run our app in node

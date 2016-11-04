@@ -5,6 +5,7 @@ export const INITIAL_STATE = { gymLocations: null };
 
 export const receive = (state = INITIAL_STATE, action) => {
 	const  { gymResults } = action;
+	console.log ('gymResults:', gymResults)
 	const newResults = gymResults.businesses.map(gym => {
 		return {
 			lat: gym.location.coordinate.latitude,
