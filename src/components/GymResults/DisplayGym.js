@@ -59,6 +59,7 @@ class DisplayGym extends Component {
 					</div>
 				</a>
 
+
 				<GymModal
 					show={showModal}
 					hide={this.hideModal}
