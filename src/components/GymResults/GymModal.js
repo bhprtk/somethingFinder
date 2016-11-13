@@ -74,9 +74,7 @@ GymModal.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-	return {
-
-	};
+	return {};
 }
 
 function mapDispatchToProps(dispatch) {
