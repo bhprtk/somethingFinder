@@ -18,6 +18,7 @@ const logger = createLogger({
   predicate: (getState, { type }) => USE_LOGGING && R.not(R.contains(type, SAGA_LOGGING_BLACKLIST))
 });
 
+
 export default function configureStore(initialState) {
 	const store = createStore (
 		rootReducer,
