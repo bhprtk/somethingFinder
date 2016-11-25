@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
-
-
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as mapActions from '../../actions/mapActions';
