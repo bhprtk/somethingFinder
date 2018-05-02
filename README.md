@@ -20,9 +20,6 @@ npm start
 ```
 This app uses the Yelp API with NodeJS. Anyone who would like to build their own finder could simply change what to look for in the tools/controllers/yelp.js file.
 
-## Deployed to Heroku here:
-[Gym Finder](https://gym-finder.herokuapp.com/)
-
 ## Technologies Used
 * ReactJS
 * Redux
@@ -35,7 +32,9 @@ This app uses the Yelp API with NodeJS. Anyone who would like to build their own
 * Heroku
 
 ## License
-[MIT](LICENSE)
+[MIT](LICENSE) © [bhprtk](https://github.com/bhprtk)
+
+
 
 
 
