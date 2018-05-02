@@ -35,6 +35,7 @@ This app uses the Yelp API with NodeJS. Anyone who would like to build their own
 * Heroku
 
 ## License
+[MIT](LICENSE)
 
 
 
