@@ -1,5 +1,5 @@
-# Gym Finder
-Find gyms around the location you provide.
+# Something Finder
+Find businesses around the location you provide.
 
 ## Build Status
 [![Build Status](https://travis-ci.org/bhprtk/somethingFinder.svg?branch=master)](https://travis-ci.org/bhprtk/somethingFinder)
